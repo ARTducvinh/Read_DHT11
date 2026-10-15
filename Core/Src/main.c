@@ -21,6 +21,8 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include "dht11.h"
+#include <stdio.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -93,6 +95,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   USART1_SendString("hello\r\n");
+  DHT11_Init();
 
   /* USER CODE END 2 */
 
@@ -100,9 +103,14 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
+    DHT11_Data d = {0};
+  char msg[64];
 
-    /* USER CODE BEGIN 3 */
+  DHT11_Status st = DHT11_Read(&d);
+  DHT11_ToString(st, &d, msg, sizeof(msg));
+  USART1_SendString(msg);
+
+  HAL_Delay(2000);
   }
   /* USER CODE END 3 */
 }

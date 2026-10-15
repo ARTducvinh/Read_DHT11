@@ -40,6 +40,7 @@ Core/Src/main.c \
 Core/Src/hardware/gpio.c \
 Core/Src/hardware/usart.c \
 Core/Src/hardware/tim.c \
+Core/Src/hardware/dht11.c \
 Core/Src/stm32f4xx_it.c \
 Core/Src/stm32f4xx_hal_msp.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c \
